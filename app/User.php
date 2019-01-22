@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Mail;
+use Naux\Mail\SendCloudTemplate;
 
 class User extends Authenticatable
 {
@@ -27,4 +29,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //override reset password email
+    public function sendPasswordResetNotification($token)
+    {
+        $data = [
+            'url' => url(route('password.reset',$token))
+        ];
+        $template = new SendCloudTemplate('zhihu_app_password_reset ', $data);
+
+        Mail::raw($template, function ($message){
+            $message->from('chenyangjieabc@gmail', 'Zhihu-app');
+
+            $message->to($this->email);
+        });
+    }
+
 }

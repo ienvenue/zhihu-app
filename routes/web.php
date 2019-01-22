@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +22,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('email/verify{token}',['as'=>'email.verify','user'=>'EmailController@verify']);
+Route::get('email/verify/{token}',['as'=>'email.verify','uses'=>'EmailController@verify']);
 
 

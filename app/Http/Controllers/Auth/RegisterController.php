@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Mail;
+use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -79,11 +79,11 @@ class RegisterController extends Controller
 
     private function sendVerifyEmailTo($user)
     {
-        $date = ['url' => route('email.verify',['token'=>$user->confirmation_token]),'name'=>$user->name];
-        $template = new SendCloudTemplate('zhihu_app_register', $date);
+        $data = ['url' => route('email.verify',['token'=>$user->confirmation_token]),'name'=>$user->name];
+        $template = new SendCloudTemplate('zhihu_app_register', $data   );
 
         Mail::raw($template, function ($message) use($user){
-            $message->from('chen@laravel.com', 'Laravel');
+            $message->from('chenyangjieabc@gmail.com', 'Zhihu-app');
 
             $message->to($user->email);
         });

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\User;
-use Auth;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class EmailController extends Controller
 {
     public function verify($token)
     {
-        $user=User::where('comfirmation_token',$token)->first();
+        $user=User::where('confirmation_token',$token)->first();
         if (is_null($user))
         {
             flash('Failed to register!','danger');//add something you want to tell user
