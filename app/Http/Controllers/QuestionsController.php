@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreQuestionRequest;
 use App\Question;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent;
+
+
 
 class QuestionsController extends Controller
 {
     /**
+     * QuestionsController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+
      */
     public function index()
     {
@@ -29,39 +40,49 @@ class QuestionsController extends Controller
         return view('questions.make');
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreQuestionRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreQuestionRequest $request)// use Dependency Injection
     {
-        $data=[
-            'title'=>$request->get('title'),
-            'body'=>$request->get('body'),
-            'user_id'=>Auth::id()
+//        $rules=[
+//            'title'=>'required|min:6|max:196',
+//            'body'=>'required|min:26',
+//        ];
+//        $messgae=[
+//            'title.required'=>'Title can not empty.',
+//            'title.min'=>'Title can not less than 6 char.',
+//            'body.min'=>'Body can not less than 26 char.',
+//            'body.require'=>'Body can not empty.',
+//        ];
+//        $this->validate($request,$rules,$messgae);
+        $data = [
+            'title' => $request->get('title'),
+            'body' => $request->get('body'),
+            'user_id' => Auth::id()
         ];
         $question = Question::create($data);
-        return redirect()->route('questions.show',[$question->id]);
+        return redirect()->route('questions.show', [$question->id]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $question =Question::find($id);
-        return view('questions.show',compact('question'));
+        $question = Question::find($id);
+        return view('questions.show', compact('question'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -72,8 +93,8 @@ class QuestionsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -84,7 +105,7 @@ class QuestionsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

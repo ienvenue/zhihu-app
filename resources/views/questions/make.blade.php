@@ -16,13 +16,28 @@
                         @endif
                         <form action={{route('questions.index')}} method="post">
                             {!! csrf_field() !!}
-                            <div class="form-group">
+                            <div class="form-group" {{ $errors->has('title') ? ' has-error' : '' }}>
                                 <label for="title">Title</label>
-                                <input type="text" name="title" class="form-control" placeholder="Title" id="title">
+                                <input type="text" value="{{old('title')}}" name="title" class="form-control"
+                                       placeholder="Title" id="title">
+                                @if ($errors->has('title'))
+                                    <span class="help-block" style="color:red">
+                                        <strong>{{ $errors->first('title') }} </strong>
+                                    </span>
+                                @endif
                             </div>
-                            <!-- 编辑器容器 -->
-                            <script id="container" name="body" type="text/plain"></script>
-                            <hr>
+                            <div class="form-group" {{ $errors->has('body') ? ' has-error' : '' }}>
+                                <label for="title">Description</label>
+                                <!-- 编辑器容器 -->
+                                <script id="container" name="body" style="height:300px" type="text/plain">
+                                    {!!  old('body') !!}
+                                </script>
+                                @if ($errors->has('body'))
+                                    <span class="help-block" style="color:red">
+                                        <strong>{{ $errors->first('body') }} </strong>
+                                    </span>
+                                @endif
+                            </div>
                             <button class="btn btn-success float-right" type="submit">Submit</button>
                         </form>
                     </div>
@@ -32,7 +47,17 @@
     </div>
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
-        var ue = UE.getEditor('container');
+        var ue = UE.getEditor('container', {
+            toolbars: [
+                ['bold', 'italic', 'underline', 'strikethrough', 'blockquote', 'insertunorderedlist', 'insertorderedlist', 'justifyleft','justifycenter', 'justifyright',  'link', 'insertimage', 'fullscreen']
+            ],
+            elementPathEnabled: false,
+            enableContextMenu: false,
+            autoClearEmptyNode:true,
+            wordCount:false,
+            imagePopup:false,
+            autotypeset:{ indent: true,imageBlockLine: 'center' }
+        });
         ue.ready(function () {
             ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
         });
