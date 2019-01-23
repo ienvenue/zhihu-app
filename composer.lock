@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2d8ff2d127f31043533d5b0a49cb76e",
+    "content-hash": "8dada1b0ab9b93ac51c2117172e587be",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1488,6 +1488,52 @@
                 "serialize"
             ],
             "time": "2019-01-14T14:45:33+00:00"
+        },
+        {
+            "name": "overtrue/laravel-ueditor",
+            "version": "1.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overtrue/laravel-ueditor.git",
+                "reference": "f73f6399a21ab8c6635e492b7b5a28caaafa4127"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/overtrue/laravel-ueditor/zipball/f73f6399a21ab8c6635e492b7b5a28caaafa4127",
+                "reference": "f73f6399a21ab8c6635e492b7b5a28caaafa4127",
+                "shasum": ""
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.10"
+            },
+            "suggest": {
+                "overtrue/laravel-filesystem-qiniu": "如果你想要使用七牛云存储，也许你需要安装它哦~"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Overtrue\\LaravelUEditor\\UEditorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Overtrue\\LaravelUEditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "overtrue",
+                    "email": "anzhengchao@gmail.com"
+                }
+            ],
+            "description": "UEditor integration for Laravel.",
+            "time": "2018-12-22T07:40:09+00:00"
         },
         {
             "name": "paragonie/random_compat",
