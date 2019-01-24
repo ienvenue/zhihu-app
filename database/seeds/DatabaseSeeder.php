@@ -11,6 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $factory->define(App\Topic::class, function (Faker $faker) {
+            return [
+                'name' => $faker->word,
+                'bio' => $faker->paragraph,
+                'question_count'=>1,
+            ];
+        });// $this->call(UsersTableSeeder::class);
     }
 }
