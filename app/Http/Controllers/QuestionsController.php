@@ -4,20 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreQuestionRequest;
 use App\Question;
+use App\Repositories\QuestionRepository;
 use App\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-
+/**
+ * Class QuestionsController
+ * @package App\Http\Controllers
+ */
 class QuestionsController extends Controller
 {
     /**
-     * QuestionsController constructor.
+     * @var QuestionRepository
      */
-    public function __construct()
+    protected $questionRepository;
+
+    public function __construct(QuestionRepository $questionRepository)
     {
         $this->middleware('auth')->except(['index', 'show']);
+        $this->questionRepository=$questionRepository;
+
     }
 
     /**
@@ -47,7 +55,7 @@ class QuestionsController extends Controller
      */
     public function store(StoreQuestionRequest $request)// use Dependency Injection
     {
-        $topics=$this->normalizeTopics( $request->get('topics'));
+        $topics=$this->questionRepository->normalizeTopics( $request->get('topics'));
 
 //        $rules=[
 //            'title'=>'required|min:6|max:196',
@@ -65,7 +73,7 @@ class QuestionsController extends Controller
             'body' => $request->get('body'),
             'user_id' => Auth::id()
         ];
-        $question = Question::query()->create($data);
+        $question = $this->questionRepository->create($data);
         $question->topics()->attach($topics);
         return redirect()->route('questions.show', [$question->id]);
     }
@@ -78,7 +86,7 @@ class QuestionsController extends Controller
      */
     public function show($id)
     {
-        $question = Question::query()->where('id',$id)->with('topics')->first();
+        $question = $this->questionRepository->byIdWithTopics($id);
         return view('questions.show', compact('question'));
     }
 
@@ -116,25 +124,4 @@ class QuestionsController extends Controller
         //
     }
 
-    private function normalizeTopics(array $topics)
-    {
-        return collect($topics)->map(function ($topic) {
-
-            if (is_numeric($topic) && $topic_number = (int)$topic) {
-                if ($newTopic = Topic::query()->findOrFail($topic_number)) {
-                    $newTopic->increment('questions_count');
-                    return $topic_number;
-                }
-
-            }
-
-            if ($newTopic = Topic::query()->where('name', $topic)->first()) {
-                $newTopic->increment('questions_count');
-                return $newTopic->id;
-            }
-
-            $newTopic = Topic::query()->create(['name' => $topic, 'questions_count' => 1]);
-            return $newTopic->id;
-        })->toArray();
-    }
 }

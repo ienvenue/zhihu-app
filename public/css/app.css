@@ -11130,6 +11130,23 @@ a.text-dark:focus {
   border-color: #5897fb;
 }
 
+a.topic {
+  background: #eff6fa;
+  padding: 1px 10px 0;
+  border-radius: 30px;
+  text-decoration: none;
+  margin: 0 5px 5px 0;
+  display: inline-block;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+a.topic:hover {
+  background: #259;
+  color: #fff;
+  text-decoration: none;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
