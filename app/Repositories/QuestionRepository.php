@@ -28,7 +28,10 @@ class QuestionRepository
     {
         return Question::query()->create($attributes);
     }
-
+    public function byId($id)
+    {
+        return Question::query()->findOrFail($id);
+    }
     public function normalizeTopics(array $topics)
     {
         return collect($topics)->map(function ($topic) {

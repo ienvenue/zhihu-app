@@ -17,7 +17,11 @@
                             </div>
                         @endif
                         {!! $question->body !!}
-
+                    </div>
+                    <div class="actions">
+                        @if(Auth::check()&& Auth::user()->owns($question))
+                            <span class="edit"><a href="{{route('questions.edit',$question->id)}}">Edit</a></span>
+                        @endif
                     </div>
                 </div>
             </div>

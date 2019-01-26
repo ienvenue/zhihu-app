@@ -11147,6 +11147,28 @@ a.topic:hover {
   text-decoration: none;
 }
 
+.button.is-naked {
+  background: 0 0;
+  border: none;
+  boder-radius: 0;
+  padding: 0;
+  height: auto;
+}
+
+.actions {
+  display: flex;
+  padding: 10px 20px;
+}
+
+.delete-form {
+  margin-left: 20px;
+}
+
+.delete-button {
+  color: #3097D1;
+  text-decoration: none;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
