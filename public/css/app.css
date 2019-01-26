@@ -11130,7 +11130,7 @@ a.text-dark:focus {
   border-color: #5897fb;
 }
 
-.card-body img {
+.card-body.content img {
   width: 100%;
 }
 

@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header"> Post issue</div>
 
-                    <div class="card-body">
+                    <div class="card-body content">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
