@@ -21,6 +21,11 @@
                     <div class="actions">
                         @if(Auth::check()&& Auth::user()->owns($question))
                             <span class="edit"><a href="{{route('questions.edit',$question->id)}}">Edit</a></span>
+                            <form action="{{route('questions.destroy',$question->id)}}" method="post" class="delete-form">
+                                {{method_field('DELETE')}}
+                                {!! csrf_field() !!}
+                                <button class="button is-naked delete-button">Del</button>
+                            </form>
                         @endif
                     </div>
                 </div>

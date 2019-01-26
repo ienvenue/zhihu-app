@@ -28,6 +28,11 @@ class QuestionRepository
     {
         return Question::query()->create($attributes);
     }
+
+    public function getQuestionsFeed()
+    {
+        return Question::published()->latest('updated_at')->with('user')->get();
+    }
     public function byId($id)
     {
         return Question::query()->findOrFail($id);

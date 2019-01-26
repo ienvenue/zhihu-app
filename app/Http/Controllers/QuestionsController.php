@@ -32,6 +32,7 @@ class QuestionsController extends Controller
 
     }
 
+
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +40,8 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        dd(1);
+        $questions= $this->questionRepository->getQuestionsFeed();
+        return view('questions.index',compact('questions'));
     }
 
     /**
@@ -112,7 +114,11 @@ class QuestionsController extends Controller
     }
 
 
-
+    /**
+     * @param StoreQuestionRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(StoreQuestionRequest $request, $id)
     {
 
@@ -128,15 +134,22 @@ class QuestionsController extends Controller
 
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        //
+        $question = $this->questionRepository->byId($id);
+        if (Auth::user()->owns($question))
+        {
+            $question->delete();
+            return redirect('/');
+        }
+        else
+            return back();
     }
 
 }

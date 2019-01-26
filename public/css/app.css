@@ -11130,15 +11130,20 @@ a.text-dark:focus {
   border-color: #5897fb;
 }
 
+.card-body img {
+  width: 100%;
+}
+
 a.topic {
-  background: #eff6fa;
+  background-color: #eff6fa;
   padding: 1px 10px 0;
   border-radius: 30px;
   text-decoration: none;
   margin: 0 5px 5px 0;
   display: inline-block;
-  white-space: nowrap;
+  white-space: normal;
   cursor: pointer;
+  float: right;
 }
 
 a.topic:hover {
@@ -11150,7 +11155,7 @@ a.topic:hover {
 .button.is-naked {
   background: 0 0;
   border: none;
-  boder-radius: 0;
+  border-radius: 0;
   padding: 0;
   height: auto;
 }
