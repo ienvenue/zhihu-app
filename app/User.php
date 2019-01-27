@@ -34,17 +34,43 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function answers()
     {
         return $this->hasMany(Answer::class);
     }
 
-    public function follows($question)
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function follows()
     {
-        return Follow::query()->create([
-            'question_id'=>$question,
-            'user_id'=>$this->id,
-        ]);
+        return $this->belongsToMany(Question::class,'user_question')->withTimestamps();
+//        return Follow::query()->create([
+//            'question_id'=>$question,
+//            'user_id'=>$this->id,
+//        ]);
+    }
+
+    /**
+     * @param $question
+     * @return array
+     */
+    public function followThis($question)
+    {
+        return $this->follows()->toggle($question);
+    }
+
+    /**
+     * @param $question
+     * @return bool
+     */
+    public function followed($question)
+    {
+        return !!$this->follows()->where('question_id',$question)->count();
     }
     /**
      * @param Model $model

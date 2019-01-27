@@ -13,6 +13,7 @@ class AnswerController extends Controller
     protected $answer;
     public function __construct(AnswerRepository $answer)
     {
+
         $this->answer=$answer;
     }
 

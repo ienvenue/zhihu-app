@@ -37,15 +37,23 @@
                         <h2>{{ $question->followers_count  }}</h2>
                         <span>Followers</span>
                     </div>
-                    <div class="card-body content">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <a href="/questions/{{$question->id}}/follow" class="btn btn-info">Follow</a>
-                        <a href="#editor" class="btn btn-primary">Answer</a>
-                    </div>
+                    @if(Auth::check())
+                        <div class="card-body ">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            <a href="/questions/{{$question->id}}/follow"
+                               class="btn btn-primary {{ Auth::user()->followed($question->id) ? 'btn-success' : ''}}">
+                                {{Auth::user()->followed($question->id) ? 'Followed' : 'Follow'}}
+                            </a>
+                            <a href="#editor" class="btn btn-primary">Answer</a>
+
+                    @else
+                        <a href="{{route('login')}}" class="btn btn-success btn-block">Login to follow</a>
+                    @endif
+                        </div>
                 </div>
             </div>
             <div class="col-md-8 col-md-offset-1">
