@@ -56,6 +56,7 @@
                                 </div>
                             </div>
                         @endforeach
+                        @if(Auth::check())
                         <form action="/questions/{{$question->id}}/answer" method="post">
                             {!! csrf_field() !!}
                             <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
@@ -70,6 +71,11 @@
                             </div>
                             <button class="btn btn-success float-right" type="submit">Submit</button>
                         </form>
+                                        @else
+                                        <a href="{{url('login')}}" class="btn btn-success btn-block">
+                                        Login to submit answer
+                                        </a>
+                                        @endif
                     </div>
                 </div>
             </div>
