@@ -39,6 +39,13 @@ class User extends Authenticatable
         return $this->hasMany(Answer::class);
     }
 
+    public function follows($question)
+    {
+        return Follow::query()->create([
+            'question_id'=>$question,
+            'user_id'=>$this->id,
+        ]);
+    }
     /**
      * @param Model $model
      * @return bool

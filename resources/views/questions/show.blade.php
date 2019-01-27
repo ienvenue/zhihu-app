@@ -3,8 +3,8 @@
 @section('content')
     @include('vendor.ueditor.assets')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-1">
                 <div class="card">
                     <div class="card-header">{{ $question->title }}
                         @foreach($question->topics as $topic)
@@ -31,8 +31,24 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-8">
+            <div class="col-md-3">
+                <div class="card" style="text-align: center">
+                    <div class="card-header">
+                        <h2>{{ $question->followers_count  }}</h2>
+                        <span>Followers</span>
+                    </div>
+                    <div class="card-body content">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <a href="/questions/{{$question->id}}/follow" class="btn btn-info">Follow</a>
+                        <a href="#editor" class="btn btn-primary">Answer</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-1">
                 <br/>
                 <div class="card">
                     <div class="card-header">
@@ -56,26 +72,26 @@
                                 </div>
                             </div>
                         @endforeach
-                        @if(Auth::check())
-                        <form action="/questions/{{$question->id}}/answer" method="post">
-                            {!! csrf_field() !!}
-                            <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-                                <script id="container" name="body" style="height:200px" type="text/plain">
-                                    {!!  old('body') !!}
-                                </script>
-                                @if ($errors->has('body'))
-                                    <span class="help-block"  style="color:red">
-                                        <strong>{{ $errors->first('body') }} </strong>
+                            @if(Auth::check())
+                                <form action="/questions/{{$question->id}}/answer" method="post">
+                                    {!! csrf_field() !!}
+                                    <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
+                                        <script id="container" name="body" style="height:200px" type="text/plain">
+                                            {!!  old('body') !!}
+                                        </script>
+                                        @if ($errors->has('body'))
+                                            <span class="help-block" style="color:red">
+                                    <strong>{{ $errors->first('body') }} </strong>
                                     </span>
-                                @endif
-                            </div>
-                            <button class="btn btn-success float-right" type="submit">Submit</button>
-                        </form>
-                                        @else
-                                        <a href="{{url('login')}}" class="btn btn-success btn-block">
-                                        Login to submit answer
-                                        </a>
                                         @endif
+                                    </div>
+                                    <button class="btn btn-success float-right" type="submit">Submit</button>
+                                </form>
+                            @else
+                                <a href="{{url('login')}}" class="btn btn-success btn-block">
+                                    Login to submit answer
+                                </a>
+                            @endif
                     </div>
                 </div>
             </div>
