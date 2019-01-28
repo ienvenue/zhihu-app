@@ -1,7 +1,22 @@
 @extends('layouts.app')
-
+@include('vendor.ueditor.assets')
 @section('content')
-    @include('vendor.ueditor.assets')
+    <script type="text/javascript">
+        var ue = UE.getEditor('container', {
+            toolbars: [
+                ['bold', 'italic', 'underline', 'strikethrough', 'blockquote', 'insertunorderedlist', 'insertorderedlist', 'justifyleft', 'justifycenter', 'justifyright', 'link', 'insertimage', 'fullscreen']
+            ],
+            elementPathEnabled: false,
+            enableContextMenu: false,
+            autoClearEmptyNode: true,
+            wordCount: false,
+            imagePopup: false,
+            autotypeset: {indent: true, imageBlockLine: 'center'}
+        });
+        ue.ready(function () {
+            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+        });
+    </script>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
@@ -22,7 +37,8 @@
                     <div class="actions">
                         @if(Auth::check()&& Auth::user()->owns($question))
                             <span class="edit"><a href="{{route('questions.edit',$question->id)}}">Edit</a></span>
-                            <form action="{{route('questions.destroy',$question->id)}}" method="post" class="delete-form">
+                            <form action="{{route('questions.destroy',$question->id)}}" method="post"
+                                  class="delete-form">
                                 {{method_field('DELETE')}}
                                 {!! csrf_field() !!}
                                 <button class="button is-naked delete-button">Del</button>
@@ -39,20 +55,16 @@
                     </div>
                     @if(Auth::check())
                         <div class="card-body ">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
-                            <a href="/questions/{{$question->id}}/follow"
-                               class="btn btn-primary {{ Auth::user()->followed($question->id) ? 'btn-success' : ''}}">
-                                {{Auth::user()->followed($question->id) ? 'Followed' : 'Follow'}}
-                            </a>
+                            <question-follow-button question="{{$question->id}}" user="{{Auth::id()}}"></question-follow-button>
+                            {{--<a href="/questions/{{$question->id}}/follow"--}}
+                            {{--class="btn btn-primary {{ Auth::user()->followed($question->id) ? 'btn-success' : ''}}">--}}
+                            {{--{{Auth::user()->followed($question->id) ? 'Followed' : 'Follow'}}--}}
+                            {{--</a>--}}
                             <a href="#editor" class="btn btn-primary">Answer</a>
 
-                    @else
-                        <a href="{{route('login')}}" class="btn btn-success btn-block">Login to follow</a>
-                    @endif
+                            @else
+                                <a href="{{route('login')}}" class="btn btn-success btn-block">Login to follow</a>
+                            @endif
                         </div>
                 </div>
             </div>
@@ -80,46 +92,31 @@
                                 </div>
                             </div>
                         @endforeach
-                            @if(Auth::check())
-                                <form action="/questions/{{$question->id}}/answer" method="post">
-                                    {!! csrf_field() !!}
-                                    <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-                                        <script id="container" name="body" style="height:200px" type="text/plain">
-                                            {!!  old('body') !!}
-                                        </script>
-                                        @if ($errors->has('body'))
-                                            <span class="help-block" style="color:red">
-                                    <strong>{{ $errors->first('body') }} </strong>
-                                    </span>
-                                        @endif
-                                    </div>
-                                    <button class="btn btn-success float-right" type="submit">Submit</button>
-                                </form>
-                            @else
-                                <a href="{{url('login')}}" class="btn btn-success btn-block">
-                                    Login to submit answer
-                                </a>
-                            @endif
+                        @if(Auth::check())
+                            <form action="/questions/{{$question->id}}/answer" method="post">
+                                {!! csrf_field() !!}
+                                <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
+                                    <script id="container" name="body" style="height:200px" type="text/plain">
+                                        {!!  old('body') !!}
+                                    </script>
+                                    @if ($errors->has('body'))
+                                        <span class="help-block" style="color:red">
+                                            <strong>{{ $errors->first('body') }} </strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <button class="btn btn-success float-right" type="submit">Submit</button>
+                            </form>
+                        @else
+                            <a href="{{url('login')}}" class="btn btn-success btn-block">
+                                Login to submit answer
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script type="text/javascript">
-        var ue = UE.getEditor('container', {
-            toolbars: [
-                ['bold', 'italic', 'underline', 'strikethrough', 'blockquote', 'insertunorderedlist', 'insertorderedlist', 'justifyleft', 'justifycenter', 'justifyright', 'link', 'insertimage', 'fullscreen']
-            ],
-            elementPathEnabled: false,
-            enableContextMenu: false,
-            autoClearEmptyNode: true,
-            wordCount: false,
-            imagePopup: false,
-            autotypeset: {indent: true, imageBlockLine: 'center'}
-        });
-        ue.ready(function () {
-            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
-        });
-    </script>
+
 @endsection
