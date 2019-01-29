@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,26 +22,25 @@ Route::middleware('api')->get('/topics', function (Request $request) {
     $topics = \App\Topic::select(['id', 'name'])->where('name', 'like', '%' . $request->query('q') . '%')->get();
     return $topics;
 });
-Route::middleware('api')->post('/question/follower', function (Request $request) {
-    $followed = \App\Follow::query()->where('question_id', $request->get('question'))
-        ->where('user_id', $request->get('user'))->count();
+Route::middleware('auth:api')->post('/question/follower', function (Request $request) {
+    $user=Auth::guard('api')->user();
+    $followed = $user->followed($request->get('question'));
     if ($followed) {
         return response()->json(['followed' => true]);
     } else
         return response()->json(['followed' => false]);
 });
-Route::middleware('api')->post('/question/follow', function (Request $request) {
-    $followed = \App\Follow::query()->where('question_id', $request->get('question'))
-        ->where('user_id', $request->get('user'))->first();
-    if ($followed !==null) {
-        $followed->delete();
+
+
+Route::middleware('auth:api')->post('/question/follow', function (Request $request) {
+    $user=Auth::guard('api')->user();
+    $question = \App\Question::query()->findOrFail($request->get('question'));
+    $followed =  $user->followThis($question->id);
+    if (count($followed['detached'])>0) {
+        $question->decrement('followers_count');
         return response()->json(['followed' => false]);
-    } else
-    {
-        \App\Follow::query()->create([
-           'question_id'=>$request->get('question'),
-            'user_id'=>$request->get('user')
-        ]);
+    } else {
+        $question->increment('followers_count');
         return response()->json(['followed' => true]);
     }
 

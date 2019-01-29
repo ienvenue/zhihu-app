@@ -50,12 +50,12 @@
             <div class="col-md-3">
                 <div class="card" style="text-align: center">
                     <div class="card-header">
-                        <h2>{{ $question->followers_count  }}</h2>
+                        <h2>{{ $question->followers_count}}</h2>
                         <span>Followers</span>
                     </div>
                     @if(Auth::check())
                         <div class="card-body ">
-                            <question-follow-button question="{{$question->id}}" user="{{Auth::id()}}"></question-follow-button>
+                            <question-follow-button question="{{$question->id}}"></question-follow-button>
                             {{--<a href="/questions/{{$question->id}}/follow"--}}
                             {{--class="btn btn-primary {{ Auth::user()->followed($question->id) ? 'btn-success' : ''}}">--}}
                             {{--{{Auth::user()->followed($question->id) ? 'Followed' : 'Follow'}}--}}

@@ -10,9 +10,9 @@
 
 <script>
     export default {
-        props:['question','user'],
+        props:['question'],
         mounted() {
-            axios.post('/api/question/follower', {'question':this.question,'user':this.user}).then(response => {
+            axios.post('/api/question/follower', {'question':this.question}).then(response => {
                 this.followed =response.data.followed
             })
         },
@@ -28,7 +28,7 @@
         },
         methods:{
             follow(){
-                axios.post('/api/question/follow', {'question':this.question,'user':this.user}).then(response => {
+                axios.post('/api/question/follow', {'question':this.question}).then(response => {
                     this.followed =response.data.followed
                 })
             }

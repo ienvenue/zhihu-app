@@ -22,7 +22,12 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
+    <!-- Scripts -->
+    <script>
+        window.Laravel = {!! json_encode([
+                "apiToken" => auth()->user()->api_token ?? null
+        ]) !!};
+    </script>
     <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
 </head>
 <body>
