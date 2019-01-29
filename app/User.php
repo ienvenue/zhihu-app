@@ -72,6 +72,11 @@ class User extends Authenticatable
     {
         return !!$this->follows()->where('question_id',$question)->count();
     }
+
+    public function followers()
+    {
+        return $this->belongsToMany(self::class,'followers','follower_id','followed_id')->withTimestamps();
+    }
     /**
      * @param Model $model
      * @return bool
