@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 
 class FollowersController extends Controller
@@ -18,9 +18,9 @@ class FollowersController extends Controller
         $this->user = $user;
     }
 
-    public function index(Request $request)
+    public function index($id)
     {
-        $this->user->byId($request->get('user'));
+        $user=$this->user->byId($id);
         $followers = $user->followers()->pluck('follower_id')->toArray();
         if (in_array(Auth::guard('api')->user()->id,$followers)){
             return response()->json(['followed'=>true]);
@@ -32,6 +32,18 @@ class FollowersController extends Controller
 
     public function follow()
     {
-        
+        $userToFollow = $this->user->byId(request('user'));
+
+        $followed = Auth::guard('api')->user()->followThisUser($userToFollow->id);
+
+        if(count($followed['attached']) > 0){
+            $userToFollow->increment('followers_count');
+
+            //Auth::guard('api')->user()->increment('followings_count');
+            return response()->json(['followed' => true]);
+        }
+        $userToFollow->decrement('followers_count');
+        //Auth::guard('api')->user()->decrement('followings_count');
+        return response()->json(['followed' => false]);
     }
 }

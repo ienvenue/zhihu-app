@@ -1866,9 +1866,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/user/followers', {
-      'user': this.user
-    }).then(function (response) {
+    axios.get('/api/user/followers/' + this.user).then(function (response) {
       _this.followed = response.data.followed;
     });
   },

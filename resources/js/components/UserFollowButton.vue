@@ -12,7 +12,7 @@
     export default {
         props:['user'],
         mounted() {
-            axios.get('/api/user/followers', {'user':this.user}).then(response => {
+            axios.get('/api/user/followers/'+this.user).then(response => {
                 this.followed =response.data.followed
             })
         },
