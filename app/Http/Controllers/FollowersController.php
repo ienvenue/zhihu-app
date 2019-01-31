@@ -38,9 +38,9 @@ class FollowersController extends Controller
         $followed = Auth::guard('api')->user()->followThisUser($userToFollow->id);
 
         if(count($followed['attached']) > 0){
-
-            $userToFollow->increment('followers_count');
             $userToFollow->notify(new NewUserFollowNotification());
+            $userToFollow->increment('followers_count');
+
 
             //Auth::guard('api')->user()->increment('followings_count');
             return response()->json(['followed' => true]);

@@ -8,7 +8,9 @@
                     <div class="card-header">Notification</div>
 
                     <div class="card-body">
-
+                        @foreach($user->notifications as $notification)
+                            @include('notifications.'.snake_case(class_basename($notification->type)))
+                        @endforeach
                     </div>
                 </div>
             </div>

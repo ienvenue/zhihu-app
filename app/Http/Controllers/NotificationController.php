@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
+
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
     public function index()
     {
-        $user=App::user();
-        return view('notification.index');
+        $user=Auth::user()->follow;
+        return view('notifications.index',compact('user'));
     }
 }
