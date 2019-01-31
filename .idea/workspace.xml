@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3f8caf8d-7193-4c69-b6c6-bb94cf1e473f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FollowersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FollowersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/notifications/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/notifications/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,10 +60,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/notifications/index.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NotificationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+            <state relative-caret-position="286">
+              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -166,13 +165,13 @@
         <option value="$PROJECT_DIR$/resources/js/components/UserFollowButton.vue" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/routes/api.php" />
-        <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Notifications/NewUserFollowNotification.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/notifications/new_user_follow_notification.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/notifications/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/FollowersController.php" />
+        <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/resources/views/notifications/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" />
       </list>
     </option>
   </component>
@@ -299,6 +298,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="zhihu-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhihu-app" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -348,16 +358,12 @@
               <item name="views" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="notifications" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
             <path>
-              <item name="zhihu-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zhihu-app" type="462c0819:PsiDirectoryNode" />
+              <item name="zhihu-app" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="views" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="questions" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -479,7 +485,8 @@
       <workItem from="1548764583370" duration="11776000" />
       <workItem from="1548858217200" duration="1951000" />
       <workItem from="1548860740545" duration="2919000" />
-      <workItem from="1548917153752" duration="8646000" />
+      <workItem from="1548917153752" duration="8753000" />
+      <workItem from="1548946729045" duration="1508000" />
     </task>
     <task id="LOCAL-00001" summary="laravel-zhihu">
       <created>1547996121851</created>
@@ -492,7 +499,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225605000" />
+    <option name="totallyTimeSpent" value="227220000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -505,8 +512,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49837488" visible="true" weight="0.19166666" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49837488" visible="true" weight="0.19166666" />
       <window_info id="Structure" order="1" sideWeight="0.5016251" side_tool="true" weight="0.23854448" />
       <window_info id="Favorites" order="2" sideWeight="0.50049853" side_tool="true" weight="0.17880085" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -526,7 +534,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.23385416" />
+      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.23385416" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49837488" visible="true" weight="0.24915369" />
@@ -611,21 +619,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="laravel-zhihu" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/questions/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/questions/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://6327599b-6f57-43e3-bf93-fb746bc8c73b/schema/zhihu/table/users" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/94f080ec-89d7-4bd7-b629-c0d1525a83cf/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -807,13 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/questions/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="153" column="46" selection-start-line="153" selection-start-column="46" selection-end-line="153" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://94f080ec-89d7-4bd7-b629-c0d1525a83cf/schema/zhihu/table/questions">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -875,27 +861,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
+    <entry file="file://$PROJECT_DIR$/app/Notifications/NewUserFollowNotification.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="82" column="86" selection-start-line="82" selection-start-column="86" selection-end-line="82" selection-end-column="86" />
+        <state relative-caret-position="-400">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/notifications/new_user_follow_notification.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        <state relative-caret-position="546">
+          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/questions/make.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-546" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/questions/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FollowersController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="614">
-          <caret line="40" column="54" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
           <folding>
             <element signature="e#40#88#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -906,31 +914,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Notifications/NewUserFollowNotification.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/notifications/new_user_follow_notification.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-400">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="31" column="22" lean-forward="true" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NotificationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="130">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/notifications/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+        <state relative-caret-position="312">
+          <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="48" column="24" lean-forward="true" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NotificationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
         </state>
       </provider>
     </entry>

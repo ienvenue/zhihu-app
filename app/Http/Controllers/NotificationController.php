@@ -9,7 +9,7 @@ class NotificationController extends Controller
 {
     public function index()
     {
-        $user=Auth::user()->follow;
+        $user=Auth::user();
         return view('notifications.index',compact('user'));
     }
 }
