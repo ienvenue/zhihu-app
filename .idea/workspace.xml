@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3f8caf8d-7193-4c69-b6c6-bb94cf1e473f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Channels/SendCloudChannel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Channels/SendCloudChannel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/NewUserFollowNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/NewUserFollowNotification.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -301,17 +299,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="zhihu-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zhihu-app" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -353,6 +340,17 @@
               <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="js" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="zhihu-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhihu-app" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -476,6 +474,7 @@
       <workItem from="1548860740545" duration="2919000" />
       <workItem from="1548917153752" duration="8753000" />
       <workItem from="1548946729045" duration="1508000" />
+      <workItem from="1549038664968" duration="487000" />
     </task>
     <task id="LOCAL-00001" summary="laravel-zhihu">
       <created>1547996121851</created>
@@ -488,7 +487,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231335000" />
+    <option name="totallyTimeSpent" value="231822000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -501,9 +500,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49837488" visible="true" weight="0.19166666" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49837488" visible="true" weight="0.19166666" />
       <window_info id="Structure" order="1" sideWeight="0.5016251" side_tool="true" weight="0.23854448" />
       <window_info id="Favorites" order="2" sideWeight="0.50049853" side_tool="true" weight="0.17880085" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -517,7 +515,7 @@
       <window_info anchor="bottom" auto_hide="true" x="0" y="25" width="1920" height="1029" id="Version Control" order="8" weight="0.6695821" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" weight="0.32847425" />
       <window_info anchor="bottom" auto_hide="true" x="274" y="351" width="1376" height="304" id="Command Line Tools Console" order="10" weight="0.46459746" />
-      <window_info anchor="bottom" auto_hide="true" x="0" y="23" width="1920" height="1057" id="Terminal" order="11" weight="0.5121242" />
+      <window_info active="true" anchor="bottom" auto_hide="true" x="0" y="23" width="1920" height="1057" id="Terminal" order="11" visible="true" weight="0.5121242" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.3802817" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32901296" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
