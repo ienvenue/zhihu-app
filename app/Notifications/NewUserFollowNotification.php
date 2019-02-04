@@ -3,14 +3,13 @@
 namespace App\Notifications;
 
 use App\Channels\SendCloudChannel;
+use App\Mail\UserMailer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Naux\Mail\SendCloudTemplate;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 
     /**
@@ -47,17 +46,7 @@ class NewUserFollowNotification extends Notification
      */
     public function toSendcloud($notifiable)
     {
-        $data = [
-            'url' => 'zhihu-local.com',
-            'name'=>Auth::guard('api')->user()->name
-        ];
-        $template = new SendCloudTemplate('zhihu_app_user_follow', $data);
-
-        Mail::raw($template, function ($message) use($notifiable){
-           // $message->from('chenyangjieabc@gmail', 'Zhihu-app');
-           //this is a bug, SendCloud Use Bug
-            $message->to($notifiable->email);
-        });
+        (new UserMailer())->followNotifyEmail($notifiable->email);
     }
     /**
      * Get the mail representation of the notification.
