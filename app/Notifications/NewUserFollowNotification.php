@@ -38,7 +38,7 @@ class NewUserFollowNotification extends Notification
      */
     public function via($notifiable)
     {
-        return [SendCloudChannel::class,'database',];
+        return ['database',];
     }
 
     /**

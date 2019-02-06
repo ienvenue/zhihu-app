@@ -1,19 +1,18 @@
 <template>
-    <button class="btn btn-primary"
+    <button
+            class="btn btn-default"
+            v-bind:class="{'btn-success': followed}"
             v-text="text"
-            v-bind:class="{'btn-success':followed}"
             v-on:click="follow"
-    >
-
-    </button>
+    ></button>
 </template>
 
 <script>
     export default {
         props:['user'],
         mounted() {
-            axios.get('/api/user/followers/'+this.user).then(response => {
-                this.followed =response.data.followed
+            axios.get('/api/user/followers/' + this.user).then(response => {
+                this.followed = response.data.followed
             })
         },
         data() {
@@ -23,13 +22,13 @@
         },
         computed: {
             text() {
-                return this.followed ? 'Followed' : '  Follow'
+                return this.followed ? 'followed' : 'follow'
             }
         },
         methods:{
-            follow(){
-                axios.post('/api/user/follow', {'user':this.user}).then(response => {
-                    this.followed =response.data.followed
+            follow() {
+                axios.post('/api/user/follow',{'user':this.user}).then(response => {
+                    this.followed = response.data.followed
                 })
             }
         }

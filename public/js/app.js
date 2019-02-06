@@ -1860,7 +1860,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   mounted: function mounted() {
@@ -1877,7 +1876,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     text: function text() {
-      return this.followed ? 'Followed' : '  Follow';
+      return this.followed ? 'followed' : 'follow';
     }
   },
   methods: {
@@ -36819,7 +36818,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("button", {
-    staticClass: "btn btn-primary",
+    staticClass: "btn btn-default",
     class: { "btn-success": _vm.followed },
     domProps: { textContent: _vm._s(_vm.text) },
     on: { click: _vm.follow }
