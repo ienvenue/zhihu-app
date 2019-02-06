@@ -56,6 +56,16 @@ class User extends Authenticatable
 //        ]);
     }
 
+    public function votes()
+    {
+        return $this->belongsToMany(Answer::class,'votes')->withTimestamps();
+    }
+
+    public function voteFor($answer)
+    {
+        return $this->votes()->toggle($answer);
+    }
+
     /**
      * @param $question
      * @return array
