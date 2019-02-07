@@ -48,3 +48,4 @@ Route::middleware('auth:api')->post('/answer/{id}/votes/users', 'VotesController
 Route::middleware('auth:api')->post('/answer/vote', 'VotesController@vote');
 Route::middleware('auth:api')->get('/user/followers/{id}', 'FollowersController@index');
 Route::middleware('auth:api')->post('/user/follow', 'FollowersController@follow');
+Route::middleware('auth:api')->post('/message/store', 'MessagesController@store');
