@@ -66,6 +66,11 @@ class User extends Authenticatable
         return $this->votes()->toggle($answer);
     }
 
+    public function hasVotedFor($answer)
+    {
+        return !!$this->votes()->where('answer_id', $answer)->count();
+    }
+
     /**
      * @param $question
      * @return array
