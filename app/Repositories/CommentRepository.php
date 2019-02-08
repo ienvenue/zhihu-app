@@ -3,26 +3,26 @@
  * Created by PhpStorm.
  * User: cheny
  * Date: 2019/2/8
- * Time: 0:00
+ * Time: 19:26
  */
 
 namespace App\Repositories;
 
 
-use App\Message;
+use App\Comment;
 
 /**
- * Class MessageRepository
+ * Class CommentRepository
  * @package App\Repositories
  */
-class MessageRepository
+class CommentRepository
 {
     /**
      * @param array $attributes
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
+     * @return mixed
      */
     public function create(array $attributes)
     {
-        return Message::query()->create($attributes);
+        return Comment::create($attributes);
     }
 }

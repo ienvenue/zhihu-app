@@ -11,6 +11,10 @@ namespace App\Repositories;
 
 use App\Answer;
 
+/**
+ * Class AnswerRepository
+ * @package App\Repositories
+ */
 class AnswerRepository
 {
     /**
@@ -21,6 +25,7 @@ class AnswerRepository
     {
         return Answer::create($attributes);
     }
+
     /**
      * @param $id
      * @return mixed
@@ -29,6 +34,7 @@ class AnswerRepository
     {
         return Answer::find($id);
     }
+
     /**
      * @param $id
      * @return mixed
@@ -38,4 +44,5 @@ class AnswerRepository
         $answer = Answer::with('comments', 'comments.user')->where('id', $id)->first();
         return $answer->comments;
     }
+    
 }
