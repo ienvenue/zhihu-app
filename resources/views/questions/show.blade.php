@@ -78,7 +78,8 @@
                         @foreach($question->answer as $answer)
                             <div class="media">
                                 <div class="media-left">
-                                    <user-vote-button answer="{{$answer->id}}" count="{{$answer->votes_count}}"></user-vote-button>
+                                    <user-vote-button answer="{{$answer->id}}"
+                                                      count="{{$answer->votes_count}}"></user-vote-button>
                                 </div>
                                 <div class="media-body">
                                     <h4 class="media-heading">
@@ -114,7 +115,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                                            </br>
+                </br>
                 <div class="card">
                     <div class="card-header question-follow">
                         <h5>About author</h5>
@@ -123,7 +124,7 @@
                         <div class="media ">
                             <div class="media-left">
                                 <a href="#">
-                                    <img width="60" class="align-self-center mr-3" src="{{$question->user->avatar}}" alt="{{$question->user->name}}">
+                                        <img width="40" src="{{$question->user->avatar}}" alt="{{$question->user->name}}">
                                 </a>
                             </div>
                             <div class="media-body ">
@@ -131,26 +132,25 @@
                                         {{ $question->user->name }}
                                     </a>
                                 </h4>
+                                    <div>
+                                <div class="user-statics">
+                                    <div class="statics-item text-center">
+                                        <div class="statics-text">Q</div>
+                                        <div class="statics-count">{{ $question->user->question_count }}</div>
+                                    </div>
+                                    <div class="statics-item text-center">
+                                        <div class="statics-text">A</div>
+                                        <div class="statics-count">{{ $question->user->answer_count }}</div>
+                                    </div>
+                                    <div class="statics-item text-center">
+                                        <div class="statics-text">F</div>
+                                        <div class="statics-count">{{ $question->user->followers_count }}</div>
+                                    </div>
+                                </div>
 
-                            <div class="user-statics">
-                                <div class="statics-item text-center">
-                                    <div class="statics-text">Q</div>
-                                    <div class="statics-count">{{ $question->user->question_count }}</div>
-                                </div>
-                                <div class="statics-item text-center">
-                                    <div class="statics-text">A</div>
-                                    <div class="statics-count">{{ $question->user->answer_count }}</div>
-                                </div>
-                                <div class="statics-item text-center">
-                                    <div class="statics-text">F</div>
-                                    <div class="statics-count">{{ $question->user->followers_count }}</div>
-                                </div>
-                            </div>
-
-                        <user-follow-button user="{{$question->user_id}}"></user-follow-button>
-                        <send-message user="{{$question->user_id}}"></send-message>
-                                        </div>
-                       </div>
+                                        <user-follow-button user="{{$question->user_id}}"></user-follow-button>
+                                        <send-message user="{{$question->user_id}}"></send-message>
+                        </div>
                     </div>
                 </div>
             </div>
