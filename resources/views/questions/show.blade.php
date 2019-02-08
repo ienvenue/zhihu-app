@@ -44,6 +44,11 @@
                                 <button class="button is-naked delete-button">Del</button>
                             </form>
                         @endif
+                            <comments type="question"
+                                      model="{{$question->id}}"
+                                      count="{{$question->comments()->count()}}">
+
+                            </comments>
                     </div>
                 </div>
             </div>
@@ -89,6 +94,10 @@
                                     </h4>
                                     {!! $answer->body !!}
                                 </div>
+                                <comments type="answer"
+                                          model="{{$answer->id}}"
+                                          count="{{$answer->comments()->count()}}">
+                                </comments>
                             </div>
                         @endforeach
                         @if(Auth::check())

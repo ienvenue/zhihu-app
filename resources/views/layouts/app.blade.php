@@ -27,6 +27,12 @@
         window.Laravel = {!! json_encode([
                 "apiToken" => auth()->user()->api_token ?? null
         ]) !!};
+        @if(Auth::check())
+            window.Zhihu = {
+            name:"{{Auth::user()->name}}",
+            avatar:"{{Auth::user()->avatar}}"
+        }
+        @endif
     </script>
     <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
 </head>

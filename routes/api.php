@@ -49,3 +49,6 @@ Route::middleware('auth:api')->post('/answer/vote', 'VotesController@vote');
 Route::middleware('auth:api')->get('/user/followers/{id}', 'FollowersController@index');
 Route::middleware('auth:api')->post('/user/follow', 'FollowersController@follow');
 Route::middleware('auth:api')->post('/message/store', 'MessagesController@store');
+Route::get('answer/{id}/comments','CommentsController@answer');
+Route::get('question/{id}/comments','CommentsController@question');
+Route::middleware('auth:api')->post('comment','CommentsController@store');
