@@ -11194,6 +11194,10 @@ a.topic:hover {
   margin-top: 80px;
 }
 
+.media {
+  vertical-align: middle;
+}
+
 .media.unread {
   background: #fff9ca;
 }
@@ -11209,6 +11213,10 @@ a.topic:hover {
 
 .notifications.unread {
   background: #fff9ea;
+}
+
+.table tbody tr td {
+  vertical-align: middle;
 }
 
 .navbar-laravel {
