@@ -11,7 +11,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <a class="close" data-dismiss="modal">×</a>
                         <h4 class="modal-title" style="margin-left: 300px;">
                             CommentList
                         </h4>

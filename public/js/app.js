@@ -37085,18 +37085,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button ",
-            "data-dismiss": "modal",
-            "aria-hidden": "true"
-          }
-        },
-        [_vm._v("×")]
-      ),
+      _c("a", { staticClass: "close", attrs: { "data-dismiss": "modal" } }, [
+        _vm._v("×")
+      ]),
       _vm._v(" "),
       _c(
         "h4",

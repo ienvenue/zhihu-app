@@ -24,7 +24,8 @@ class MessagesController extends Controller
 
         $message = $this->message->create([
             'to_user_id' => \request('user'),
-            'from_user_id' => Auth::guard('api')->user()->id,
+            //'from_user_id' => Auth::guard('api')->user()->id,
+            'from_user_id' => user('api')->id,
             'body' => \request('body')
         ]);
         dd(1);

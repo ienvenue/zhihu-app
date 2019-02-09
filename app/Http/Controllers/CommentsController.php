@@ -35,7 +35,7 @@ class CommentsController extends Controller
      * @param $question
      * @param $comment
      */
-    public function __construct(AnswerRepository $answer,QuestionRepository $question,CommentRepository $comment)
+    public function __construct(AnswerRepository $answer, QuestionRepository $question, CommentRepository $comment)
     {
         $this->answer = $answer;
         $this->question = $question;
@@ -73,7 +73,7 @@ class CommentsController extends Controller
         $comment = Comment::create([
             'commentable_id' => request('model'),
             'commentable_type' => $model,
-            'user_id' => Auth::guard('api')->user()->id,
+            'user_id' => user('api')->id,
             'body' => request('body')
         ]);
         return $comment;
@@ -88,4 +88,5 @@ class CommentsController extends Controller
     {
         return $type === 'question' ? 'App\Question' : 'App\Answer';
     }
+
 }
