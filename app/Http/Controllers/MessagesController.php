@@ -26,6 +26,7 @@ class MessagesController extends Controller
         $this->message = $message;
     }
 
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -36,10 +37,10 @@ class MessagesController extends Controller
             'to_user_id' => \request('user'),
             //'from_user_id' => Auth::guard('api')->user()->id,
             'from_user_id' => user('api')->id,
-            'body' => \request('body')
+            'body' => \request('body'),
+            'dialog_id' => time() . Auth::id(),
         ]);
-        dd(1);
-        if($message) {
+        if ($message) {
             return response()->json(['status' => true]);
         }
         return response()->json(['status' => false]);
