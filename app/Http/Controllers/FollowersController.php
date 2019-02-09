@@ -6,8 +6,15 @@ use App\Notifications\NewUserFollowNotification;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class FollowersController
+ * @package App\Http\Controllers
+ */
 class FollowersController extends Controller
 {
+    /**
+     * @var UserRepository
+     */
     protected $user;
 
     /**
@@ -19,6 +26,10 @@ class FollowersController extends Controller
         $this->user = $user;
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index($id)
     {
         $user=  $this->user->byId($id);
@@ -31,6 +42,9 @@ class FollowersController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function follow()
     {
         $userToFollow = $this->user->byId(request('user'));

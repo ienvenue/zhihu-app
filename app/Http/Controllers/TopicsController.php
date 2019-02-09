@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\TopicRepository;
 use Illuminate\Http\Request;
 
 class TopicsController extends Controller

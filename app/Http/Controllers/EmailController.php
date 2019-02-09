@@ -5,6 +5,10 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 
 
+/**
+ * Class EmailController
+ * @package App\Http\Controllers
+ */
 class EmailController extends Controller
 {
     public function verify($token)
