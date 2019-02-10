@@ -70,13 +70,13 @@ class CommentsController extends Controller
     public function store()
     {
         $model = $this->getModelNameFromType(request('type'));
-        $comment = Comment::create([
+        return $this->comment->create([
             'commentable_id' => request('model'),
             'commentable_type' => $model,
             'user_id' => user('api')->id,
             'body' => request('body')
         ]);
-        return $comment;
+
     }
     //judge comment from Q or A
 

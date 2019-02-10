@@ -11187,15 +11187,11 @@ a.topic:hover {
 }
 
 .statics-item {
-  padding: 2px 10px;
+  padding: 2px 20px;
 }
 
 .messages-list {
   margin-top: 80px;
-}
-
-.media {
-  vertical-align: middle;
 }
 
 .media.unread {
@@ -11213,10 +11209,6 @@ a.topic:hover {
 
 .notifications.unread {
   background: #fff9ea;
-}
-
-.table tbody tr td {
-  vertical-align: middle;
 }
 
 .navbar-laravel {

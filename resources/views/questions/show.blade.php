@@ -47,7 +47,6 @@
                             <comments type="question"
                                       model="{{$question->id}}"
                                       count="{{$question->comments()->count()}}">
-
                             </comments>
                     </div>
                 </div>
@@ -158,7 +157,12 @@
                                 </div>
 
                                         <user-follow-button user="{{$question->user_id}}"></user-follow-button>
-                                        <send-message user="{{$question->user_id}}"></send-message>
+                                            @if(Auth::check() && user()->id != $question->user_id)
+                                        <send-message user="{ $question->user_id }" ></send-message>
+                                            @elseif(Auth::check() && user()->id == $question->user_id )
+                                            @else
+                                        <a href="{url('user/login')}" class="btn btn-default">Message</a>
+                                            @endif
                         </div>
                     </div>
                 </div>

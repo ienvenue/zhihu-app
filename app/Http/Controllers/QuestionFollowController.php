@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\QuestionRepository;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use Illuminate\Http\Request;
 
 /**
  * Class QuestionFollowController

@@ -65,7 +65,7 @@
                 return this.comment_count + ' comment'
             },
             total() {
-                return this.count
+                return this.comment_count
             }
         },
         methods:{
@@ -80,7 +80,7 @@
                     }
                     this.comments.push(comment)
                     this.body = ''
-                    this.total ++
+                    this.total++
                 })
             },
             showCommentsForm() {

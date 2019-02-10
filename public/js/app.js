@@ -1814,13 +1814,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       body: '',
       comments: [],
-      newComment: {
-        user: {
-          name: Zhihu.name,
-          avatar: Zhihu.avatar
-        },
-        body: ''
-      },
       comment_count: this.count
     };
   },
@@ -1833,6 +1826,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     text: function text() {
       return this.comment_count + ' comment';
+    },
+    total: function total() {
+      return this.comment_count;
     }
   },
   methods: {
@@ -1844,12 +1840,18 @@ __webpack_require__.r(__webpack_exports__);
         'model': this.model,
         'body': this.body
       }).then(function (response) {
-        _this.newComment.body = response.data.body;
+        var comment = {
+          user: {
+            name: Zhihu.name,
+            avatar: Zhihu.avatar
+          },
+          body: response.data.body
+        };
 
-        _this.comments.push(_this.newComment);
+        _this.comments.push(comment);
 
         _this.body = '';
-        _this.comment_count++;
+        _this.total++;
       });
     },
     showCommentsForm: function showCommentsForm() {
