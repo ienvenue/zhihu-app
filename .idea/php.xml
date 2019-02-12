@@ -92,6 +92,9 @@
       <path value="$PROJECT_DIR$/vendor/naux/sendcloud" />
       <path value="$PROJECT_DIR$/vendor/laracasts/flash" />
       <path value="$PROJECT_DIR$/vendor/overtrue/laravel-ueditor" />
+      <path value="$PROJECT_DIR$/vendor/qiniu/php-sdk" />
+      <path value="$PROJECT_DIR$/vendor/overtrue/flysystem-qiniu" />
+      <path value="$PROJECT_DIR$/vendor/overtrue/laravel-filesystem-qiniu" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
