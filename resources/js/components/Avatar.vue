@@ -55,7 +55,8 @@
              * upload success
              *
              * [param] jsonData   服务器返回数据，已进行json转码
-             * [param] field
+             * [param] field this.imgDataUrl = response.url
+             this.toggleShow()
              */
             cropUploadSuccess(response, field){
                 this.imgDataUrl = response.url
