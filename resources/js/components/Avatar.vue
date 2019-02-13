@@ -18,7 +18,7 @@
 
 <script>
     import 'babel-polyfill'; // es6 shim
-    import myUpload from 'vue-image-crop-upload';
+    import myUpload from 'vue-image-crop-upload/upload-2.vue';
     export default {
         props:['avatar'],
         data() {
@@ -48,15 +48,13 @@
              * [param] field
              */
             cropSuccess(imgDataUrl, field){
-                console.log('-------- crop success --------');
                 this.imgDataUrl = imgDataUrl;
             },
             /**
              * upload success
              *
-             * [param] jsonData   服务器返回数据，已进行json转码
-             * [param] field this.imgDataUrl = response.url
-             this.toggleShow()
+             * [param] jsonData  server api return data, already json encode
+             * [param] field
              */
             cropUploadSuccess(response, field){
                 this.imgDataUrl = response.url
@@ -74,5 +72,5 @@
                 console.log('field: ' + field);
             }
         }
-    };
+    }
 </script>

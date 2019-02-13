@@ -11,7 +11,7 @@
                                 <img width="50" src="{{$question->user->avatar}}" alt="{{$question->user->name}}">
                             </a>
                         </div>
-                        <div class="media-body">
+                        <div class="media-body" style="margin-top: 15px;">
                             <h4 class="media-heading">
                                 <a href="{{route('questions.show',$question->id)}}">
                                     {{$question->title}}

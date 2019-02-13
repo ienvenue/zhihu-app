@@ -11143,6 +11143,7 @@ a.topic {
   display: inline-block;
   white-space: nowrap;
   cursor: pointer;
+  float: right;
 }
 
 a.topic:hover {
@@ -11207,8 +11208,16 @@ a.topic:hover {
   background: transparent;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .notifications.unread {
   background: #fff9ea;
+}
+
+.media-body {
+  margin-left: 10px;
 }
 
 .navbar-laravel {

@@ -1765,7 +1765,7 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var babel_polyfill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-polyfill */ "./node_modules/_babel-polyfill@6.26.0@babel-polyfill/lib/index.js");
 /* harmony import */ var babel_polyfill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_polyfill__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_image_crop_upload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-image-crop-upload */ "./node_modules/_vue-image-crop-upload@2.5.0@vue-image-crop-upload/upload-2.vue");
+/* harmony import */ var vue_image_crop_upload_upload_2_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-image-crop-upload/upload-2.vue */ "./node_modules/_vue-image-crop-upload@2.5.0@vue-image-crop-upload/upload-2.vue");
 //
 //
 //
@@ -1803,7 +1803,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   components: {
-    'my-upload': vue_image_crop_upload__WEBPACK_IMPORTED_MODULE_1__["default"]
+    'my-upload': vue_image_crop_upload_upload_2_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
     toggleShow: function toggleShow() {
@@ -1817,14 +1817,13 @@ __webpack_require__.r(__webpack_exports__);
      * [param] field
      */
     cropSuccess: function cropSuccess(imgDataUrl, field) {
-      console.log('-------- crop success --------');
       this.imgDataUrl = imgDataUrl;
     },
 
     /**
      * upload success
      *
-     * [param] jsonData   服务器返回数据，已进行json转码
+     * [param] jsonData  server api return data, already json encode
      * [param] field
      */
     cropUploadSuccess: function cropUploadSuccess(response, field) {
@@ -51089,7 +51088,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("button", {
-    staticClass: "btn btn-default",
+    staticClass: "btn btn-lg",
     class: { "btn-primary": _vm.voted },
     domProps: { textContent: _vm._s(_vm.text) },
     on: { click: _vm.vote }
