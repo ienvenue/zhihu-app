@@ -33,4 +33,4 @@ Route::get('password','PasswordController@password');
 Route::post('password/update','PasswordController@update');
 Route::get('setting','SettingsController@index');
 Route::post('setting','SettingsController@store');
-
+Route::get('topic/{topicId}','TopicsController@show');

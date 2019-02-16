@@ -16,7 +16,7 @@
 //    return $request->user();
 //});
 
-Route::middleware('auth:api')->get('/topics', 'TopicsController@index');
+Route::get('/topics', 'TopicsController@index');
 Route::middleware('auth:api')->post('/question/follower','QuestionFollowController@follower');
 Route::middleware('auth:api')->post('/question/follow','QuestionFollowController@followThisQuestion');
 Route::middleware('auth:api')->post('/answer/{id}/votes/users', 'VotesController@users');

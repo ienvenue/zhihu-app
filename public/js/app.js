@@ -2161,7 +2161,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     text: function text() {
-      return this.followed ? 'Followed' : 'Follow';
+      return this.followed ? '已关注' : '关注';
     }
   },
   methods: {
@@ -51059,7 +51059,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("button", {
     staticClass: "btn btn-primary",
-    class: { "btn-success": _vm.followed },
     staticStyle: { float: "left", "margin-right": "4px" },
     domProps: { textContent: _vm._s(_vm.text) },
     on: { click: _vm.follow }

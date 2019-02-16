@@ -58,120 +58,118 @@
                         <span>Followers</span>
                     </div>
                     {{--@if(Auth::check())--}}
-                        <div class="card-body ">
-                            <question-follow-button question="{{$question->id}}"></question-follow-button>
-                            {{--<a href="/questions/{{$question->id}}/follow"--}}
-                            {{--class="btn btn-primary {{ Auth::user()->followed($question->id) ? 'btn-success' : ''}}">--}}
-                            {{--{{Auth::user()->followed($question->id) ? 'Followed' : 'Follow'}}--}}
-                            {{--</a>--}}
-                            <a href="#editor" class="btn btn-primary">Answer</a>
+                    <div class="card-body ">
+                        <question-follow-button question="{{$question->id}}"></question-follow-button>
+                        {{--<a href="/questions/{{$question->id}}/follow"--}}
+                        {{--class="btn btn-primary {{ Auth::user()->followed($question->id) ? 'btn-success' : ''}}">--}}
+                        {{--{{Auth::user()->followed($question->id) ? 'Followed' : 'Follow'}}--}}
+                        {{--</a>--}}
+                        <a href="#editor" class="btn btn-primary">Answer</a>
 
-                            {{--@else--}}
-                                {{--<a href="{{route('login')}}" class="btn btn-success btn-block">Login to follow</a>--}}
-                            {{--@endif--}}
-                        </div>
+                        {{--@else--}}
+                        {{--<a href="{{route('login')}}" class="btn btn-success btn-block">Login to follow</a>--}}
+                        {{--@endif--}}
+                    </div>
                 </div>
             </div>
 
-                <div class="col-md-8 col-md-offset-1">
-                    <br/>
-                    <div class="card">
-                        <div class="card-header">
-                            Have {{ $question->answers_count }} Answer
-                        </div>
-                        <div class="card-body">
-                            @foreach($question->answer as $answer)
-                                <div class="media">
-                                    <div class="media-left">
-                                        <user-vote-button answer="{{$answer->id}}"
-                                                          count="{{$answer->votes_count}}"></user-vote-button>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">
-                                            <a href="/user/{{$answer->user->name}}">
-                                                {{$answer->user->name}}
-                                            </a>
-                                        </h4>
-                                        {!! $answer->body !!}
-                                    </div>
-                                    <comments type="answer"
-                                              model="{{$answer->id}}"
-                                              count="{{$answer->comments()->count()}}">
-                                    </comments>
-                                </div>
-                            @endforeach
-                            @if(Auth::check())
-                                <form action="/questions/{{$question->id}}/answer" method="post">
-                                    {!! csrf_field() !!}
-                                    <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-                                        <script id="container" name="body" style="height:200px" type="text/plain">
-                                        {!!  old('body') !!}
-                                        </script>
-                                        @if ($errors->has('body'))
-                                            <span class="help-block" style="color:red">
-                                            <strong>{{ $errors->first('body') }} </strong>
-                                        </span>
-                                        @endif
-                                    </div>
-                                    <button class="btn btn-success float-right" type="submit">Submit</button>
-                                </form>
-                            @else
-                                <a href="{{url('login')}}" class="btn btn-success btn-block">
-                                    Login to submit answer
-                                </a>
-                            @endif
-                        </div>
+            <div class="col-md-8 col-md-offset-1">
+                <br/>
+                <div class="card">
+                    <div class="card-header">
+                        Have {{ $question->answers_count }} Answer
                     </div>
-                </div>
-                <div class="col-md-3">
-                    </br>
-                    <div class="card">
-                        <div class="card-header question-follow">
-                            <h5>About author</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="media ">
+                    <div class="card-body">
+                        @foreach($question->answer as $answer)
+                            <div class="media">
                                 <div class="media-left">
-                                    <a href="#">
-                                        <img width="30" src="{{$question->user->avatar}}"
-                                             alt="{{$question->user->name}}">
-                                    </a>
+                                    <user-vote-button answer="{{$answer->id}}"
+                                                      count="{{$answer->votes_count}}"></user-vote-button>
                                 </div>
-                                <div class="media-body ">
-                                    <h4 class="media-heading"><a href="">
-                                            {{ $question->user->name }}
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="/user/{{$answer->user->name}}">
+                                            {{$answer->user->name}}
                                         </a>
                                     </h4>
-                                    <div>
-                                        <div class="user-statics">
-                                            <div class="statics-item text-center">
-                                                <div class="statics-text">Q</div>
-                                                <div class="statics-count">{{ $question->user->question_count }}</div>
-                                            </div>
-                                            <div class="statics-item text-center">
-                                                <div class="statics-text">A</div>
-                                                <div class="statics-count">{{ $question->user->answer_count }}</div>
-                                            </div>
-                                            <div class="statics-item text-center">
-                                                <div class="statics-text">F</div>
-                                                <div class="statics-count">{{ $question->user->followers_count }}</div>
-                                            </div>
+                                    {!! $answer->body !!}
+                                </div>
+                                <comments type="answer"
+                                          model="{{$answer->id}}"
+                                          count="{{$answer->comments()->count()}}">
+                                </comments>
+                            </div>
+                        @endforeach
+                        @if(Auth::check())
+                            <form action="/questions/{{$question->id}}/answer" method="post">
+                                {!! csrf_field() !!}
+                                <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
+                                    <script id="container" name="body" style="height:200px" type="text/plain">
+                                    {!!  old('body') !!}
+                                    </script>
+                                    @if ($errors->has('body'))
+                                        <span class="help-block" style="color:red">
+                                            <strong>{{ $errors->first('body') }} </strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <button class="btn btn-success float-right" type="submit">Submit</button>
+                            </form>
+                        @else
+                            <a href="{{url('login')}}" class="btn btn-success btn-block">
+                                Login to submit answer
+                            </a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                </br>
+                <div class="card">
+                    <div class="card-header question-follow">
+                        <h5>About author</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="media ">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img width="30" src="{{$question->user->avatar}}"
+                                         alt="{{$question->user->name}}">
+                                </a>
+                            </div>
+                            <div class="media-body ">
+                                <h4 class="media-heading"><a href="">
+                                        {{ $question->user->name }}
+                                    </a>
+                                </h4>
+                                    <div class="user-statics">
+                                        <div class="statics-item text-center">
+                                            <div class="statics-text">Q</div>
+                                            <div class="statics-count">{{ $question->user->question_count }}</div>
                                         </div>
-
-                                        <user-follow-button user="{{$question->user_id}}"></user-follow-button>
-                                        @if(Auth::check() && user()->id != $question->user_id)
-                                            <send-message user="{ $question->user_id }"></send-message>
-                                        @elseif(Auth::check() && user()->id == $question->user_id )
-                                        @else
-                                            <a href="{url('user/login')}" class="btn btn-default">Message</a>
-                                        @endif
+                                        <div class="statics-item text-center">
+                                            <div class="statics-text">A</div>
+                                            <div class="statics-count">{{ $question->user->answer_count }}</div>
+                                        </div>
+                                        <div class="statics-item text-center">
+                                            <div class="statics-text">F</div>
+                                            <div class="statics-count">{{ $question->user->followers_count }}</div>
+                                        </div>
                                     </div>
+                                <div>
+                                    <user-follow-button user="{{$question->user_id}}"></user-follow-button>
+                                    @if(Auth::check() && user()->id != $question->user_id)
+                                        <send-message user="{ $question->user_id }"></send-message>
+                                    @elseif(Auth::check() && user()->id == $question->user_id )
+                                    @else
+                                        <a href="{url('user/login')}" class="btn btn-default">Message</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+            </div>
         </div>
     </div>
 

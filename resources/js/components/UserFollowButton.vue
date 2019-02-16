@@ -1,11 +1,11 @@
 <template>
-    <button
-            class="btn btn-primary"
-            v-bind:class="{'btn-success': followed}"
-            v-text="text"
-            v-on:click="follow"
-            style="float: left;margin-right: 4px;"
-    ></button>
+        <button
+                class="btn btn-primary"
+                v-text="text"
+                v-on:click="follow"
+                style="
+                float: left;margin-right: 4px"
+        ></button>
 </template>
 
 <script>
@@ -23,7 +23,7 @@
         },
         computed: {
             text() {
-                return this.followed ? 'Followed' : 'Follow'
+                return this.followed ? '已关注' : '关注'
             }
         },
         methods: {

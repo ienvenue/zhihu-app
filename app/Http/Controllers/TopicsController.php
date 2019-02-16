@@ -20,4 +20,11 @@ class TopicsController extends Controller
     {
         return $this->topic->getTopicsForTagging($request);
     }
+
+    public function show($topicId)
+    {
+       $topic=$this->topic->showTopicNameby($topicId);
+        $question=$this->topic->showQuestionby($topicId);
+        return view('topic.show',compact('topic','question'));
+    }
 }

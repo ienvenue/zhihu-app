@@ -12,4 +12,5 @@ class Topic extends Model
     {
         return $this->belongsToMany(Question::class)->withTimestamps();
     }
+
 }
