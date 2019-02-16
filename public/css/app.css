@@ -11216,6 +11216,10 @@ a:hover {
   background: #fff9ea;
 }
 
+.media {
+  margin-top: 5px;
+}
+
 .media-body {
   margin-left: 10px;
 }

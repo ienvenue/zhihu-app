@@ -25,7 +25,7 @@
             return {
                 show: false,
                 params: {
-                    _token: Laravel.csrfToken,
+                    _token:Laravel.csrfToken,
                     name: 'img'
                 },
                 headers: {

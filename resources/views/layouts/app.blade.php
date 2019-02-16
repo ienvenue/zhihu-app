@@ -24,6 +24,11 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         window.Laravel = {!! json_encode([
                 "apiToken" => auth()->user()->api_token ?? null
         ]) !!};
@@ -101,7 +106,6 @@
 
 </body>
 
-@yield('js')
 <script>
     $('#flash-overlay-modal').modal();
 </script>
