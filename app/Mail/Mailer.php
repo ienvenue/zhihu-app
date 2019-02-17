@@ -1,16 +1,19 @@
 <?php
+namespace App\Mailer;
+use Mail;
+use Naux\Mail\SendCloudTemplate;
+
 /**
- * Created by PhpStorm.
- * User: cheny
- * Date: 2019/2/4
- * Time: 21:37
+ * Class Mailer
+ * @package App\Mailer
  */
-
-namespace App\Mail;
-
-
 class Mailer
 {
+    /**
+     * @param $template
+     * @param $email
+     * @param array $data
+     */
     protected function sendTo($template, $email, array $data)
     {
         $content = new SendCloudTemplate($template, $data);
