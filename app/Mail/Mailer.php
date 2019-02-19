@@ -1,7 +1,9 @@
 <?php
-namespace App\Mailer;
-use Mail;
+
+namespace App\Mail;
+
 use Naux\Mail\SendCloudTemplate;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class Mailer

@@ -7,7 +7,7 @@
  */
 
 
-namespace App\Mailer;
+namespace App\Mail;
 use Auth;
 
 /**
@@ -45,7 +45,7 @@ class UserMailer extends Mailer
     /**
      * @param User $user
      */
-    public function welcome(User $user)
+    public function welcome($user)
     {
         $data = [
             'url'  => route('email.verify', ['token' => $user->confirmation_token]),

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Mail\UserMailer;
-use Illuminate\Support\Facades\Mail;
+use Mail;
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Naux\Mail\SendCloudTemplate;
+use Illuminate\Support\Facades\Hash;
+
 class RegisterController extends Controller
 {
     /*php
@@ -72,7 +73,7 @@ class RegisterController extends Controller
             'confirmation_token' => str_random(40),
             'password' => Hash::make($data['password']),
             'api_token' => str_random(60),
-            'settings' => ['city' => ''],
+            'settings' => ['city' => '','bio' => ''],
         ]);
 
         $this->sendVerifyEmailTo($user);
@@ -82,7 +83,7 @@ class RegisterController extends Controller
 
     private function sendVerifyEmailTo($user)
     {
+//        (new UserMailer())->welcome($user);
         (new UserMailer())->welcome($user);
     }
-
 }

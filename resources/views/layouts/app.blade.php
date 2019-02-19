@@ -83,7 +83,21 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+                                    <a class="dropdown-item" href="/avatar">
+                                        {{ __('更换头像') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/setting">
+                                        {{ __('更新简介') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/password">
+                                        {{ __('更改密码') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('questions.create')}}">
+                                        {{ __('发布问题') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/inbox">
+                                        {{ __('查看信箱') }}
+                                    </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

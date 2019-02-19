@@ -64,7 +64,7 @@
                         {{--class="btn btn-primary {{ Auth::user()->followed($question->id) ? 'btn-success' : ''}}">--}}
                         {{--{{Auth::user()->followed($question->id) ? 'Followed' : 'Follow'}}--}}
                         {{--</a>--}}
-                        <a href="#editor" class="btn btn-primary">Answer</a>
+                        <a href="#label" class="btn btn-primary">Answer</a>
 
                         {{--@else--}}
                         {{--<a href="{{route('login')}}" class="btn btn-success btn-block">Login to follow</a>--}}
@@ -104,9 +104,11 @@
                             <form action="/questions/{{$question->id}}/answer" method="post">
                                 {!! csrf_field() !!}
                                 <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-                                    <script id="container" name="body" style="height:200px" type="text/plain">
-                                    {!!  old('body') !!}
-                                    </script>
+                                    <a name="label">
+                                        <script id="container" name="body" style="height:200px" type="text/plain">
+                                        {!!  old('body') !!}
+                                        </script>
+                                    </a>
                                     @if ($errors->has('body'))
                                         <span class="help-block" style="color:red">
                                             <strong>{{ $errors->first('body') }} </strong>
@@ -142,20 +144,20 @@
                                         {{ $question->user->name }}
                                     </a>
                                 </h4>
-                                    <div class="user-statics">
-                                        <div class="statics-item text-center">
-                                            <div class="statics-text">Q</div>
-                                            <div class="statics-count">{{ $question->user->question_count }}</div>
-                                        </div>
-                                        <div class="statics-item text-center">
-                                            <div class="statics-text">A</div>
-                                            <div class="statics-count">{{ $question->user->answer_count }}</div>
-                                        </div>
-                                        <div class="statics-item text-center">
-                                            <div class="statics-text">F</div>
-                                            <div class="statics-count">{{ $question->user->followers_count }}</div>
-                                        </div>
+                                <div class="user-statics">
+                                    <div class="statics-item text-center">
+                                        <div class="statics-text">Q</div>
+                                        <div class="statics-count">{{ $question->user->question_count }}</div>
                                     </div>
+                                    <div class="statics-item text-center">
+                                        <div class="statics-text">A</div>
+                                        <div class="statics-count">{{ $question->user->answer_count }}</div>
+                                    </div>
+                                    <div class="statics-item text-center">
+                                        <div class="statics-text">F</div>
+                                        <div class="statics-count">{{ $question->user->followers_count }}</div>
+                                    </div>
+                                </div>
                                 <div>
                                     <user-follow-button user="{{$question->user_id}}"></user-follow-button>
                                     @if(Auth::check() && user()->id != $question->user_id)
